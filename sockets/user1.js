@@ -1,29 +1,29 @@
-import WebSocket from 'ws';
-import { createInput } from './readline.js';
+import WebSocket from "ws";
+import { createInput } from "./readline.js";
 
-const ws = new WebSocket('ws://localhost:4000');
+const ws = new WebSocket("ws://localhost:4000");
+let rl; // Store the readline interface
 
-ws.on('open', () => {
-  console.log('user1 connected to ws://localhost:4000');
-  createInput('user1> ', (line) => {
+ws.on("open", () => {
+  console.log("user1 connected to ws://localhost:4000");
+  rl = createInput("user1> ", (line) => {
     if (line.trim().length === 0) return;
     ws.send(`user1: ${line}`);
   });
 });
 
-ws.on('message', (data) => {
+ws.on("message", (data) => {
   console.log(`\n[recv] ${data.toString()}`);
+  rl.prompt(); // Restore the prompt properly
   // Like console.log, but without a new line
-  process.stdout.write('user1> ');
+  // process.stdout.write('user1> ');
 });
 
-ws.on('close', () => {
-  console.log('Connection closed');
+ws.on("close", () => {
+  console.log("Connection closed");
   process.exit(0);
 });
 
-ws.on('error', (err) => {
-  console.error('WebSocket error:', err.message);
+ws.on("error", (err) => {
+  console.error("WebSocket error:", err.message);
 });
-
-
