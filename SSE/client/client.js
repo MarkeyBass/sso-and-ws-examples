@@ -6,8 +6,8 @@ async function startSSE() {
         }
     });
 
-    const reader = response.body.getReader();
-    const decoder = new TextDecoder();
+    const reader = response.body.getReader(); // stream reader - read the response body as a stream of chunks
+    const decoder = new TextDecoder(); // decode the chunks into text
 
     while (true) {
         const { value, done } = await reader.read();
