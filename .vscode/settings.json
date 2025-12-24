@@ -1,0 +1,65 @@
+{
+  "restoreTerminals.terminals": [
+    {
+      "splitTerminals": [
+        {
+          "name": "SSE Server",
+          "commands": [
+            "cd SSE/server",
+            // "npm start"
+          ]
+        },
+        {
+          "name": "SSE Client",
+          "commands": [
+            "cd SSE/client",
+            // "node client.js"
+          ]
+        }
+      ]
+    },
+    {
+      "splitTerminals": [
+        {
+          "name": "WS Server",
+          "commands": [
+            "cd sockets",
+            // "node server.js"
+          ]
+        },
+        {
+          "name": "WS User 1",
+          "commands": [
+            "cd sockets",
+            // "node user1.js"
+          ]
+        },
+        {
+          "name": "WS User 2",
+          "commands": [
+            "cd sockets",
+            // "node user2.js"
+          ]
+        }
+      ]
+    },
+    {
+      "splitTerminals": [
+        {
+          "name": "Readline Example",
+          "commands": [
+            "cd readline-module",
+            // "node readline-prompt-example.js"
+          ]
+        }
+      ]
+    },
+    {
+      "splitTerminals": [
+        {
+          "name": "GIT"
+        }
+      ]
+    },
+  ]
+}
